@@ -3,8 +3,17 @@
 # ~~~~
 
 # Home page
-GET        	/                   controllers.Application.index
-GET			/products			controllers.Products.list
+GET        /                     controllers.Application.index
+
+# Products
+GET        /products             controllers.Products.list
+GET  	   /products/new  		 controllers.Products.newProduct
+GET        /products/:ean        controllers.Products.show(ean: Long)
+POST 	   /products      		 controllers.Products.save
+
+# Barcode
+GET        /barcode/:ean         controllers.BarCodes.barcode(ean: Long)
+
 
 # Map static resources from the /public folder to the /assets URL path
-GET        /assets/*file        controllers.Assets.versioned(path="/public", file: Asset)
+GET        /assets/*file         controllers.Assets.versioned(path="/public", file: Asset)

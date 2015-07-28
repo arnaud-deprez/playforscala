@@ -1,4 +1,4 @@
-@(title: String)(content: Html)(implicit lang: Lang, messages: Messages)
+@(title: String)(content: Html)(implicit lang: Lang, messages: Messages, flash: Flash)
 
 <!DOCTYPE html>
 <html>
@@ -18,8 +18,19 @@
                 </div>
             </div>
             <div class="container">
-            @content
+                @if(flash.get("success").isDefined){
+                    <div class="alert alert-success">
+                        @flash.get("success")
+                    </div> }
+                @if(flash.get("error").isDefined){
+                    <div class="alert alert-error">
+                        @flash.get("error")
+                    </div>
+                }
+
+                @content
             </div>
         </div>
+        @debug()
     </body>
 </html>
