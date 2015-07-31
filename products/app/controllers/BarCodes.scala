@@ -23,7 +23,7 @@ class BarCodes @Inject()(val messagesApi: MessagesApi) extends Controller with I
     }
   }
 
-  def ean13BarCode(ean: Long, mimeType: String): Array[Byte] = {
+  private def ean13BarCode(ean: Long, mimeType: String): Array[Byte] = {
 
     import java.io.ByteArrayOutputStream
     import java.awt.image.BufferedImage
